@@ -1,0 +1,19 @@
+.side_bar{
+
+  background-color: cornflowerblue;
+  grid-area: side;
+}
+
+.item{
+
+  
+  padding-bottom: 20px;
+ 
+  font-size: 28px;
+  
+}
+.item a {
+
+text-decoration: none;
+  color: whitesmoke;
+}

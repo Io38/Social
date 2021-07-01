@@ -1,9 +1,5 @@
-body{
-  padding: 0%;
-    margin: 0%;
-}
-.app_wrapper{
 
+.app_wrapper{
 
 width: 1500px;
   display: grid;
@@ -15,46 +11,4 @@ width: 1500px;
   "side article";
 }
 
-.header{
 
-  grid-area: head;
-  background-color: aqua;
-}
-
-.side_bar{
-
-  background-color: cornflowerblue;
-  grid-area: side;
-}
-
-.article{
-
-  background-color:  bisque;
-  grid-area: article;
-}
-
-.header img{
-
-  height: 30px;
-}
-
-.side_bar a{
-
-  text-decoration: none;
-  color: black;
-  padding-bottom: 3em;
- 
-  font-size: 28px;
-  
-}
-
-.article img{
-  height: 400px;
-  width: 100%;
-}
-
-#avatar{
-
-  height: 100px;
-  width: 100px;
-}

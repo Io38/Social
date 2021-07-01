@@ -9,15 +9,11 @@ let App = () => {
   return (
 
     <div className="app_wrapper">
-
-
       <Header />
 
       <Side />
 
       <Profile />
-
-
     </div>
   )
 }
