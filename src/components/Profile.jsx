@@ -12,7 +12,7 @@ const Profile = () => {
                     alt="Error 404 " className={q.avatar} ></img>
 
             </div>
-            123
+
         </article>
     )
 }
