@@ -11,4 +11,9 @@ width: 1500px;
   "side article";
 }
 
+.content{
+
+  background-color:  bisque;
+  grid-area: article;
+}
 

@@ -1,0 +1,45 @@
+.messages {
+
+  display: grid;
+
+  grid-template-rows: 30px 1fr;
+  grid-template-columns: 2fr 10fr;
+
+  grid-template-areas: 
+  "title title"
+  "partner history";
+
+
+}
+.title{
+
+    grid-area: title;
+    background-color: red;
+    text-align: center;
+    padding-top: 5px;
+    
+}
+
+ .partners{
+    padding: 15px;
+    
+    grid-area: partner;
+    background-color: seagreen;
+}
+
+.message_history{
+    padding: 15px;
+    grid-area: history;
+    background-color:  yellow;
+}
+
+.item{
+
+    padding-bottom: 20px;
+}
+
+.dialog_partner{
+
+    text-align: center;
+    padding-bottom: 20px;
+}
