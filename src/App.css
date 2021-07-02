@@ -9,6 +9,8 @@ width: 1500px;
   grid-template-areas: 
   "head head"
   "side article";
+
+  margin: auto;
 }
 
 .content{
@@ -16,4 +18,3 @@ width: 1500px;
   background-color:  bisque;
   grid-area: article;
 }
-
