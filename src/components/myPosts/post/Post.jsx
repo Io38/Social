@@ -2,11 +2,11 @@ import React from 'react';
 import q from './Post.module.css';
 
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={q.post}>
 
-            Post1
+            {props.text}
 
         </div>
     );

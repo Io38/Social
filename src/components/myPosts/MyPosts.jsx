@@ -5,13 +5,12 @@ import Post from './post/Post';
 const MyPosts = () => {
     return (
         <div className={q.my_posts}>
+            <textarea></textarea>
+            <button>Post</button>
+            <Post text="first message" />
+            <Post text="second message" />
+            <Post text="third message" />
 
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
 
         </div>
     );
