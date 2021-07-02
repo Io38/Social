@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css"
-import Header from "./components/Header";
-import Side from "./components/Side";
-import Profile from "./components/Profile";
+import Header from "./components/header/Header";
+import Side from "./components/sideBar/Side";
+import Profile from "./components/profile/Profile";
 
 
 let App = () => {
