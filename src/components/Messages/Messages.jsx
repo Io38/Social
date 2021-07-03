@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import q from './Messages.module.css'
 import MessageHistory from './Message_history/Message_history';
 import Partners from './Partners/Partners';
@@ -16,11 +15,14 @@ let partnersData = [
 ];
 
 let messagesData = [
-    { text: "hi!" },
-    { text: "How r u?" },
-    { text: "Hello!" },
-    { text: "ty" }
+    { count: "1", text: "hi!" },
+    { count: "2", text: "How r u?" },
+    { count: "3", text: "Hello!" },
+    { count: "4", text: "ty" }
 ];
+
+let partnersElements = partnersData.map(el => <Partners name={el.name} count={el.count} />);
+let messagesElements = messagesData.map(el => <MessageHistory text={el.text} />);
 
 const Messages = () => {
 
@@ -33,21 +35,14 @@ const Messages = () => {
             </div>
 
             <div className={q.partners}>
-                <Partners name={partnersData[0].name} count={partnersData[0].count} />
-                <Partners name={partnersData[1].name} count={partnersData[1].count} />
-                <Partners name={partnersData[2].name} count={partnersData[2].count} />
-                <Partners name={partnersData[3].name} count={partnersData[3].count} />
+
+                {partnersElements}
 
             </div>
 
             <div className={q.message_history}>
 
-                <MessageHistory text={messagesData[0].text} />
-                <MessageHistory text={messagesData[1].text} />
-                <MessageHistory text={messagesData[2].text} />
-                <MessageHistory text={messagesData[3].text} />
-
-
+                {messagesElements}
 
             </div>
 
