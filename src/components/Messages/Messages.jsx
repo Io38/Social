@@ -12,6 +12,8 @@ let partnersData = [
     { count: "2", name: "Petya" },
     { count: "3", name: "John" },
     { count: "4", name: "Viktor" },
+    { count: "5", name: "ZeroTwo" },
+    { count: "6", name: "Sasha" },
 ];
 
 let messagesData = [
@@ -42,7 +44,7 @@ const Messages = () => {
 
             <div className={q.message_history}>
 
-                {messagesElements}
+                {/* {messagesElements} */}
 
             </div>
 

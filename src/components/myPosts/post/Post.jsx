@@ -7,7 +7,9 @@ const Post = (props) => {
         <div className={q.post}>
 
             {props.text}
-
+            <div>
+                <span>Likes: {props.LikesCount}</span>
+            </div>
         </div>
     );
 }

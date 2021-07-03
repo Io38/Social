@@ -4,11 +4,14 @@ import Post from './post/Post';
 
 
 let PostData = [
-    { count: "1", text: "first post", LikesCount: "123" },
-    { count: "1", text: "first post", LikesCount: "123" },
-    { count: "1", text: "first post", LikesCount: "123" },
-    { count: "1", text: "first post", LikesCount: "123" }
+    { count: "1", text: "second post", LikesCount: "123" },
+    { count: "1", text: "My first post", LikesCount: "0" },
+    { count: "1", text: "My first post", LikesCount: "0" },
+    { count: "1", text: "My first post", LikesCount: "0" },
+    { count: "1", text: "My first post", LikesCount: "0" },
+
 ];
+
 
 let PostsElements = PostData.map(el => <Post text={el.text} count={el.count} LikesCount={el.LikesCount} />);
 
