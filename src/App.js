@@ -7,7 +7,9 @@ import Messages from "./components/Messages/Messages";
 import { BrowserRouter, Route } from "react-router-dom";
 
 
-let App = () => {
+
+
+let App = (props) => {
   return (
     <BrowserRouter>
       <div className="app_wrapper">
@@ -16,8 +18,13 @@ let App = () => {
         <Side />
 
         <div className="content">
-          <Route path="/profile" component={Profile} />
-          <Route path="/Messages" component={Messages} />
+          <Route path="/profile" render={() => <Profile PostData={props.PostData} PostsElements={props.PostsElements} />} />
+          <Route path="/Messages" render={() => <Messages partnersData={props.partnersData}
+            messagesData={props.messagesData}
+            partnersElements={props.partnersElements}
+            messagesElements={props.messagesElements}
+
+          />} />
 
         </div>
 
