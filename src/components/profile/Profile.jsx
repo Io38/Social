@@ -9,7 +9,7 @@ const Profile = (props) => {
         <article className={q.profile}>
             <div>
                 <ProfileInfo />
-                <MyPosts PostData={props.PostData} PostsElements={props.PostsElements} />
+                <MyPosts PostData={props.PostData} PostsElements={props.PostsElements} addPost={props.addPost} />
             </div>
 
         </article>

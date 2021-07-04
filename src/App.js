@@ -18,11 +18,17 @@ let App = (props) => {
         <Side />
 
         <div className="content">
-          <Route path="/profile" render={() => <Profile PostData={props.PostData} PostsElements={props.PostsElements} />} />
-          <Route path="/Messages" render={() => <Messages partnersData={props.partnersData}
-            messagesData={props.messagesData}
-            partnersElements={props.partnersElements}
-            messagesElements={props.messagesElements}
+
+          <Route path="/profile" render={() => <Profile
+            PostData={props.state.profile.PostData}
+            PostsElements={props.state.profile.PostsElements}
+            addPost={props.addPost}
+          />} />
+          <Route path="/Messages" render={() => <Messages
+            partnersData={props.state.messages.partnersData}
+            messagesData={props.state.messages.messagesData}
+            partnersElements={props.state.messages.partnersElements}
+            messagesElements={props.state.messages.messagesElements}
 
           />} />
 
