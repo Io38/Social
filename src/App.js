@@ -10,6 +10,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 
 let App = (props) => {
+
   return (
     <BrowserRouter>
       <div className="app_wrapper">
@@ -23,6 +24,8 @@ let App = (props) => {
             PostData={props.state.profile.PostData}
             PostsElements={props.state.profile.PostsElements}
             addPost={props.addPost}
+            newPostText={props.state.profile.newPostText}
+            updateNewPostText={props.updateNewPostText}
           />} />
           <Route path="/Messages" render={() => <Messages
             partnersData={props.state.messages.partnersData}
