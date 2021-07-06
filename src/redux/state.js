@@ -29,22 +29,37 @@ let store = {
         return this._state;
     },
 
-    renderEntireTree() {
+    _callSubscriber() {
 
         console.log("1wqe");
 
     },
+    addPost() {
+        if (this._state.profile.newPostText.trim() !== "") {
+
+            let newPost = {
+                count: "1",
+                text: this._state.profile.newPostText,
+                LikesCount: "0"
+            }
+
+            // state.profile.PostData.push(newPost);
+            this._state.profile.PostData.unshift(newPost);
+            this._state.profile.newPostText = '';
+            this._callSubscriber(this._state);
+        }
+    },
 
     updateNewPostText(newText) {
 
-        state.profile.newPostText = newText;
-        renderEntireTree(state);
+        this._state.profile.newPostText = newText;
+        this._callSubscriber(this._state);
 
     },
 
     subscribe(observer) {
 
-        renderEntireTree = observer;
+        this._callSubscriber = observer;
     }
 
 
