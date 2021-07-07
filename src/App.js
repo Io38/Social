@@ -23,9 +23,8 @@ let App = (props) => {
           <Route path="/profile" render={() => <Profile
             PostData={props.state.profile.PostData}
             PostsElements={props.state.profile.PostsElements}
-            addPost={props.addPost}
+            dispatch={props.dispatch}
             newPostText={props.state.profile.newPostText}
-            updateNewPostText={props.updateNewPostText}
           />} />
           <Route path="/Messages" render={() => <Messages
             partnersData={props.state.messages.partnersData}

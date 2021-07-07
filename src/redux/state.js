@@ -24,42 +24,52 @@ let store = {
 
     },
 
-    getState() {
-
-        return this._state;
-    },
-
     _callSubscriber() {
 
         console.log("1wqe");
 
     },
-    addPost() {
-        if (this._state.profile.newPostText.trim() !== "") {
 
-            let newPost = {
-                count: "1",
-                text: this._state.profile.newPostText,
-                LikesCount: "0"
-            }
+    getState() {
 
-            // state.profile.PostData.push(newPost);
-            this._state.profile.PostData.unshift(newPost);
-            this._state.profile.newPostText = '';
-            this._callSubscriber(this._state);
-        }
+        return this._state;
     },
 
-    updateNewPostText(newText) {
-
-        this._state.profile.newPostText = newText;
-        this._callSubscriber(this._state);
-
-    },
 
     subscribe(observer) {
 
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        // eslint-disable-next-line default-case
+        switch (action.type) {
+            case "ADD-POST":
+                if (this._state.profile.newPostText.trim() !== "") {
+
+                    let newPost = {
+                        count: "1",
+                        text: this._state.profile.newPostText,
+                        LikesCount: "0"
+                    }
+
+                    // state.profile.PostData.push(newPost);
+                    this._state.profile.PostData.unshift(newPost);
+                    this._state.profile.newPostText = '';
+                    this._callSubscriber(this._state);
+                }
+                break;
+
+            case "UPDATE-NEW-POST-TEXT":
+                this._state.profile.newPostText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+
+
+        }
+
+
+
     }
 
 
