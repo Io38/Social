@@ -1,4 +1,13 @@
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const updatePostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+
+
+
 let store = {
 
     _state: {
@@ -44,7 +53,7 @@ let store = {
     dispatch(action) {
         // eslint-disable-next-line default-case
         switch (action.type) {
-            case "ADD-POST":
+            case ADD_POST:
                 if (this._state.profile.newPostText.trim() !== "") {
 
                     let newPost = {
@@ -60,7 +69,7 @@ let store = {
                 }
                 break;
 
-            case "UPDATE-NEW-POST-TEXT":
+            case UPDATE_NEW_POST_TEXT:
                 this._state.profile.newPostText = action.newText;
                 this._callSubscriber(this._state);
                 break;
