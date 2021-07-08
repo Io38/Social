@@ -3,7 +3,7 @@ import "./App.css"
 import Header from "./components/header/Header";
 import Side from "./components/sideBar/Side";
 import Profile from "./components/profile/Profile";
-import Messages from "./components/Messages/Messages";
+import MessagesContainer from "./components/Messages/MessagesContainer";
 import { BrowserRouter, Route } from "react-router-dom";
 
 
@@ -21,13 +21,11 @@ let App = (props) => {
         <div className="content">
 
           <Route path="/profile" render={() => <Profile
-            PostData={props.state.profile.PostData}
-            PostsElements={props.state.profile.PostsElements}
+            store={props.store}
             dispatch={props.dispatch}
-            newPostText={props.state.profile.newPostText}
           />} />
-          <Route path="/Messages" render={() => <Messages
-            messages={props.state.messages}
+          <Route path="/Messages" render={() => <MessagesContainer
+            store={props.store}
             dispatch={props.dispatch}
 
           />} />

@@ -1,5 +1,6 @@
 import React from "react";
 import MyPosts from "../myPosts/MyPosts";
+import MyPostsContainer from "../myPosts/MyPostsContainer";
 import q from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo";
 
@@ -9,9 +10,8 @@ const Profile = (props) => {
         <article className={q.profile}>
             <div>
                 <ProfileInfo />
-                <MyPosts PostData={props.PostData}
-                    PostsElements={props.PostsElements}
-                    newPostText={props.newPostText}
+                <MyPostsContainer
+                    store={props.store}
                     dispatch={props.dispatch} />
             </div>
 

@@ -18,3 +18,8 @@ width: 1500px;
   background-color:  bisque;
   grid-area: article;
 }
+
+textarea {
+
+  resize: none;
+}

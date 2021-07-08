@@ -6,7 +6,7 @@ let initialState = {
         { count: "1", name: "Vasya" },
         { count: "2", name: "Petya" },
         { count: "3", name: "John" },
-        { count: "4", name: "Viktor" },
+        { count: "4", name: "Viktorrrrr" },
 
     ],
     messagesData: [

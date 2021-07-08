@@ -11,7 +11,7 @@ let renderEntireTree = (state) => {
 
     reactDom.render(
         <App
-            state={store.getState()}
+            store={store}
             dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
 
 }
