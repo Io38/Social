@@ -2,10 +2,15 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
+export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updatePostTextActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
 
+
+export const updateMessageTextActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
 
 
 let store = {
@@ -23,8 +28,11 @@ let store = {
                 { count: "1", text: "hi!" },
                 { count: "2", text: "How r u?" },
                 { count: "3", text: "Hello!" },
-                { count: "4", text: "ty" }
-            ]
+                { count: "4", text: "ty" },
+                { count: "4", text: "ty" },
+            ],
+
+            newMessageText: ""
         },
         profile: {
             PostData: [],
@@ -71,6 +79,19 @@ let store = {
 
             case UPDATE_NEW_POST_TEXT:
                 this._state.profile.newPostText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+
+            case UPDATE_NEW_MESSAGE_TEXT:
+                this._state.messages.newMessageText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+
+            case SEND_MESSAGE:
+
+                let mes = this._state.messages.newMessageText;
+                this._state.messages.newMessageText = "";
+                this._state.messages.messagesData.push({ count: "12", text: mes });
                 this._callSubscriber(this._state);
                 break;
 
