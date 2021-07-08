@@ -20,15 +20,8 @@ let App = (props) => {
 
         <div className="content">
 
-          <Route path="/profile" render={() => <Profile
-            store={props.store}
-            dispatch={props.dispatch}
-          />} />
-          <Route path="/Messages" render={() => <MessagesContainer
-            store={props.store}
-            dispatch={props.dispatch}
-
-          />} />
+          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/Messages" render={() => <MessagesContainer />} />
 
         </div>
 

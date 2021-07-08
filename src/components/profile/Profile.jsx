@@ -10,9 +10,7 @@ const Profile = (props) => {
         <article className={q.profile}>
             <div>
                 <ProfileInfo />
-                <MyPostsContainer
-                    store={props.store}
-                    dispatch={props.dispatch} />
+                <MyPostsContainer />
             </div>
 
         </article>

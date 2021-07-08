@@ -41,6 +41,7 @@ const Messages = (props) => {
 
                     <div>
                         <textarea
+                            placeholder="Enter message"
                             value={props.newMessageText}
                             onChange={onUpdateNewMessageText} />
                     </div>

@@ -3,6 +3,7 @@ import './index.css';
 import reactDom from "react-dom";
 import App from "./App";
 import store from './redux/redux-store';
+import { Provider } from 'react-redux';
 
 
 
@@ -10,9 +11,9 @@ import store from './redux/redux-store';
 let renderEntireTree = (state) => {
 
     reactDom.render(
-        <App
-            store={store}
-            dispatch={store.dispatch.bind(store)} />, document.getElementById('root'));
+        <Provider store={store}>
+            <App />
+        </Provider>, document.getElementById('root'));
 
 }
 
