@@ -2,14 +2,7 @@ import React from 'react';
 import MESSAGE_HISTORY from './Message_history/Message_history';
 import q from './Messages.module.css'
 import Partners from './Partners/Partners';
-import { sendMessageActionCreator, updateMessageTextActionCreator } from '../../redux/state';
-
-
-
-
-
-
-
+import { sendMessageActionCreator, updateMessageTextActionCreator } from '../../redux/messages-reducer';
 
 
 
