@@ -9,6 +9,7 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
+
         case ADD_POST:
             if (state.newPostText.trim() !== "") {
 
@@ -16,19 +17,23 @@ const profileReducer = (state = initialState, action) => {
                     count: "1",
                     text: state.newPostText,
                     LikesCount: "0"
+                };
+
+                return {
+                    ...state,
+                    PostData: [newPost, ...state.PostData],
+                    newPostText: ''
                 }
-
-
-                state.PostData.unshift(newPost);
-                state.newPostText = '';
 
             }
             return state;
 
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
 
+        case UPDATE_NEW_POST_TEXT:
+            return {
+                ...state,
+                newPostText: action.newText
+            }
 
         default:
             return state;

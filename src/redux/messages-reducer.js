@@ -6,7 +6,7 @@ let initialState = {
         { count: "1", name: "Vasya" },
         { count: "2", name: "Petya" },
         { count: "3", name: "John" },
-        { count: "4", name: "Viktorrrrr" },
+        { count: "4", name: "Viktor" },
 
     ],
     messagesData: [
@@ -25,17 +25,22 @@ const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
 
-            return state;
+            return {
+                ...state,
+                newMessageText: action.newText
+            }
+
 
         case SEND_MESSAGE:
 
-            let mes = state.newMessageText;
+            let mes = { count: "12", text: state.newMessageText };
             state.newMessageText = "";
-            state.messagesData.push({ count: "12", text: mes });
 
-            return state;
+            return {
+                ...state,
+                messagesData: [...state.messagesData, mes]
+            }
 
         default:
             return state;
