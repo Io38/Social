@@ -23,6 +23,9 @@ const Side = () => {
                 <div className={q.item}>
                     <NavLink to="/music" activeClassName={q.activeLink}>Music</NavLink>
                 </div>
+                <div className={q.item}>
+                    <NavLink to="/find-users" activeClassName={q.activeLink}>Find users</NavLink>
+                </div>
 
                 <div className={q.item}>
                     <NavLink to="/friends" activeClassName={q.activeLink}>Friends</NavLink>
