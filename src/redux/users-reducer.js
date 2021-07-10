@@ -1,12 +1,9 @@
 const FRIEND = 'FRIEND';
 const UNFRIEND = 'UNFRIEND';
 const SET_USERS = "SET-USERS"
+
 let initialState = {
-    users: [
-        { id: 1, friend: true, fullName: "name1", status: "status1", location: { city: "City 1", country: "Country 1" }, photoUrl: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" },
-        { id: 1, friend: false, fullName: "name2", status: "status2", location: { city: "City 2", country: "Country 2" }, photoUrl: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" },
-        { id: 1, friend: true, fullName: "name3", status: "status3", location: { city: "City 3", country: "Country 3" }, photoUrl: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" },
-    ]
+    users: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -18,7 +15,7 @@ const usersReducer = (state = initialState, action) => {
 
                 users: state.users.map(u => {
 
-                    if (u.id === action.userId) {
+                    if (u.id === action.id) {
 
                         return { ...u, friend: true }
                     }
@@ -31,7 +28,7 @@ const usersReducer = (state = initialState, action) => {
 
                 users: state.users.map(u => {
 
-                    if (u.id === action.userId) {
+                    if (u.id === action.id) {
 
                         return { ...u, friend: false }
                     }
@@ -41,7 +38,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.user]
+                users: [...state.users, ...action.users]
             }
 
         default: return state;

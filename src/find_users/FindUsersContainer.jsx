@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { friendAC, unFriendAC } from '../redux/users-reducer';
+import { friendAC, setUsersAC, unFriendAC } from '../redux/users-reducer';
 import FindUsers from './FindUsers';
 
 let StateToProps = (state) => {
@@ -12,13 +11,14 @@ let StateToProps = (state) => {
 let DispatchToProps = (dispatch) => {
     return {
         friend: (userId) => {
+
             dispatch(friendAC(userId));
         },
-        unfriend: (userId) => {
+        unFriend: (userId) => {
             dispatch(unFriendAC(userId));
         },
-        setUsers: () => {
-
+        setUsers: (users) => {
+            dispatch(setUsersAC(users))
         }
     }
 }
