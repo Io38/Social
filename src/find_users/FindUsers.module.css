@@ -3,3 +3,19 @@
     width: 100px;
     height: 100px;
 }
+
+.activePage{
+
+    font: bold;
+    text-decoration: underline;
+}
+
+.pages {
+    text-align: center;
+}
+
+.pages span {
+
+    padding-right: 10px;
+    
+}
