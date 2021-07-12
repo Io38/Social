@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { friendAC, setPageAC, setUsersAC, unFriendAC, setTotalUsersCountAC } from '../redux/users-reducer';
+import { friendAC, setPageAC, setUsersAC, unFriendAC, setTotalUsersCountAC, setIsLoadingAC } from '../redux/users-reducer';
 import FindUsers from './FindUsers';
 
 let StateToProps = (state) => {
@@ -7,7 +7,8 @@ let StateToProps = (state) => {
         users: state.users.users,
         pageSize: state.users.pageSize,
         totalUsersCount: state.users.totalUsersCount,
-        currentPage: state.users.currentPage
+        currentPage: state.users.currentPage,
+        isLoading: state.users.isLoading
     }
 }
 
@@ -28,6 +29,9 @@ let DispatchToProps = (dispatch) => {
         },
         setTotalUsersCount: (usersCount) => {
             dispatch(setTotalUsersCountAC(usersCount));
+        },
+        setIsLoading: (value) => {
+            dispatch(setIsLoadingAC(value));
         }
 
     }

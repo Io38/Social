@@ -2,6 +2,7 @@ import * as axios from 'axios';
 import React from 'react';
 import q from "./FindUsers.module.css"
 import photo from "../assets/photo.png"
+import Preloader from '../preloader/Preloader';
 
 class FindUsers extends React.Component {
 
@@ -9,9 +10,10 @@ class FindUsers extends React.Component {
 
 
     componentDidMount() {
+        this.props.setIsLoading(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-
+                this.props.setIsLoading(false);
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
             })
@@ -43,19 +45,13 @@ class FindUsers extends React.Component {
             pages.push(i);
         }
 
-        return (
+        return (<>
 
-            <div>
+            {this.props.isLoading ? <Preloader /> : <div>
 
-                <div className={q.pages}>
 
-                    {pages.map(e => {
-                        return <span onClick={() => {
-                            this.onPageChange(e)
-                        }}
-                            className={this.props.currentPage === e && q.activePage}>{e}  </span>
-                    })}
-                </div>
+
+
 
                 {
                     this.props.users.map(
@@ -98,8 +94,24 @@ class FindUsers extends React.Component {
                                 </span>
                             </ div>)
                 }
+
+                <div className={q.pages}>
+
+                    {pages.map(e => {
+                        return <span onClick={() => {
+                            this.onPageChange(e)
+                        }}
+                            className={this.props.currentPage === e && q.activePage}>{e}  </span>
+                    })}
+                </div>
+
+
             </div>
+            }
+        </>
+
         );
+
     }
 }
 
