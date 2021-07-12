@@ -101,7 +101,7 @@ class FindUsers extends React.Component {
                         return <span onClick={() => {
                             this.onPageChange(e)
                         }}
-                            className={this.props.currentPage === e && q.activePage}>{e}  </span>
+                            className={this.props.currentPage === e && q.activePage}>{e}   </span>
                     })}
                 </div>
 

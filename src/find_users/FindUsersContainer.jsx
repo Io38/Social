@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { friendAC, setPageAC, setUsersAC, unFriendAC, setTotalUsersCountAC, setIsLoadingAC } from '../redux/users-reducer';
+import { friend, setPage, setUsers, unFriend, setTotalUsersCount, setIsLoading } from '../redux/users-reducer';
 import FindUsers from './FindUsers';
 
 let StateToProps = (state) => {
@@ -12,31 +12,31 @@ let StateToProps = (state) => {
     }
 }
 
-let DispatchToProps = (dispatch) => {
-    return {
-        friend: (userId) => {
+// let DispatchToProps = (dispatch) => {
+//     return {
+//         friend: (userId) => {
 
-            dispatch(friendAC(userId));
-        },
-        unFriend: (userId) => {
-            dispatch(unFriendAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setPage: (page) => {
-            dispatch(setPageAC(page));
-        },
-        setTotalUsersCount: (usersCount) => {
-            dispatch(setTotalUsersCountAC(usersCount));
-        },
-        setIsLoading: (value) => {
-            dispatch(setIsLoadingAC(value));
-        }
+//             dispatch(friendAC(userId));
+//         },
+//         unFriend: (userId) => {
+//             dispatch(unFriendAC(userId));
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersAC(users))
+//         },
+//         setPage: (page) => {
+//             dispatch(setPageAC(page));
+//         },
+//         setTotalUsersCount: (usersCount) => {
+//             dispatch(setTotalUsersCountAC(usersCount));
+//         },
+//         setIsLoading: (value) => {
+//             dispatch(setIsLoadingAC(value));
+//         }
 
-    }
-}
+//     }
+// }
 
-let FindUsersContainer = connect(StateToProps, DispatchToProps)(FindUsers);
+let FindUsersContainer = connect(StateToProps, { friend, unFriend, setUsers, setPage, setTotalUsersCount, setIsLoading })(FindUsers);
 
 export default FindUsersContainer;

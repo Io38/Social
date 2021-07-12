@@ -71,11 +71,11 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const friendAC = (userId) => ({ type: FRIEND, id: userId });
-export const unFriendAC = (userId) => ({ type: UNFRIEND, id: userId });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const setPageAC = (page) => ({ type: SET_PAGE, page: page });
-export const setTotalUsersCountAC = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: usersCount });
-export const setIsLoadingAC = (value) => ({ type: SET_IS_LOADING, isLoading: value });
+export const friend = (userId) => ({ type: FRIEND, id: userId });
+export const unFriend = (userId) => ({ type: UNFRIEND, id: userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setPage = (page) => ({ type: SET_PAGE, page: page });
+export const setTotalUsersCount = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: usersCount });
+export const setIsLoading = (value) => ({ type: SET_IS_LOADING, isLoading: value });
 
 export default usersReducer;
