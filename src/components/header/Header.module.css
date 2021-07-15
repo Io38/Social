@@ -9,3 +9,11 @@
 
   height: 30px;
 }
+
+.login a{
+
+  float: right;
+  color:black;
+  text-decoration: none;
+  font-size: 20px;
+}

@@ -6,7 +6,7 @@ import { setUserProfilePage } from './../../redux/profile-reducer'
 import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends React.Component {
-    //7912
+
 
 
     componentDidMount() {
@@ -14,7 +14,7 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId;
 
         if (!userId) {
-            userId = 7912;
+            userId = 18322;
         }
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
