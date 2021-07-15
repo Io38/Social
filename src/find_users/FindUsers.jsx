@@ -3,6 +3,7 @@ import React from 'react';
 import q from "./FindUsers.module.css"
 import photo from "../assets/photo.png"
 import Preloader from '../preloader/Preloader';
+import { NavLink } from 'react-router-dom';
 
 class FindUsers extends React.Component {
 
@@ -66,8 +67,9 @@ class FindUsers extends React.Component {
 
                                 <span>
                                     <div>
-
-                                        <img src={u.photos.small == null ? photo : u.photos.small} className={q.ava} alt="failed to download the pic" />
+                                        <NavLink to={'/profile' + u.id}>
+                                            <img src={u.photos.small == null ? photo : u.photos.small} className={q.ava} alt="failed to download the pic" />
+                                        </NavLink>
                                     </div>
 
                                     <div>{u.friend ?

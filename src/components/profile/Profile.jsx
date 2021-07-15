@@ -6,9 +6,10 @@ import ProfileInfo from "./ProfileInfo";
 const Profile = (props) => {
 
     return (
+
         <article className={q.profile}>
             <div>
-                <ProfileInfo />
+                <ProfileInfo profile={props.profile} />
                 <MyPostsContainer />
             </div>
 

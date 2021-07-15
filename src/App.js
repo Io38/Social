@@ -2,10 +2,10 @@ import React from "react";
 import "./App.css"
 import Header from "./components/header/Header";
 import Side from "./components/sideBar/Side";
-import Profile from "./components/profile/Profile";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import { BrowserRouter, Route } from "react-router-dom";
 import FindUsersContainer from "./find_users/FindUsersContainer";
+import ProfileContainer from "./components/profile/ProfileContainer";
 
 
 
@@ -21,9 +21,14 @@ let App = (props) => {
 
         <div className="content">
 
-          <Route path="/profile" render={() => <Profile />} />
-          <Route path="/Messages" render={() => <MessagesContainer />} />
-          <Route path="/find-users" render={() => <FindUsersContainer />} />
+          <Route path="/profile:userId?"
+            render={() => <ProfileContainer />} />
+
+          <Route path="/Messages"
+            render={() => <MessagesContainer />} />
+
+          <Route path="/find-users"
+            render={() => <FindUsersContainer />} />
 
         </div>
 

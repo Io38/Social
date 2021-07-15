@@ -1,18 +1,28 @@
 import React from 'react';
+import Preloader from '../../preloader/Preloader';
 import q from './ProfileInfo.module.css';
 
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    if (!props.profile) {
 
+        return <Preloader />
+    }
     return (
+
         <div>
             <div className={q.avatarka}>
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+
+                <img src={props.profile.photos.large}
                     alt="Error 404 " className={q.avatar} ></img>
             </div>
-            Name Sirname<br />
-            description<br />
-            Posts:<br /><br /><br /><br /><br />
+
+            <div>{props.profile.fullName}</div>
+            <div>{props.profile.aboutMe}</div>
+
+
+
+
         </div>
     );
 
