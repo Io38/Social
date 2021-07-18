@@ -1,7 +1,7 @@
 import React from 'react';
 import Preloader from '../../preloader/Preloader';
 import q from './ProfileInfo.module.css';
-
+import defaultAva from "../../assets/photo.png"
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -13,7 +13,7 @@ const ProfileInfo = (props) => {
         <div>
             <div className={q.avatarka}>
 
-                <img src={props.profile.photos.large}
+                <img src={!props.profile.photos.large ? defaultAva : props.profile.photos.large}
                     alt="Error 404 " className={q.avatar} ></img>
             </div>
 

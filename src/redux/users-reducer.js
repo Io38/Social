@@ -4,13 +4,15 @@ const SET_USERS = "SET-USERS";
 const SET_PAGE = "SET_PAGE"
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_IS_LOADING = "SET_IS_LOADING";
+const SET_LOADING = "SET_LOADING";
 
 let initialState = {
     users: [],
     pageSize: 8,
     totalUsersCount: 0,
     currentPage: 1,
-    isLoading: true
+    isLoading: true,
+    Loading: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -64,6 +66,15 @@ const usersReducer = (state = initialState, action) => {
                 isLoading: action.isLoading
             }
 
+        case SET_LOADING:
+
+            return {
+                ...state,
+                Loading: action.value ?
+                    [...state.Loading, action.id] :
+                    state.Loading.filter(id => id !== action.id)
+            }
+
         default: return state;
 
 
@@ -77,5 +88,6 @@ export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setPage = (page) => ({ type: SET_PAGE, page: page });
 export const setTotalUsersCount = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: usersCount });
 export const setIsLoading = (value) => ({ type: SET_IS_LOADING, isLoading: value });
+export const setLoading = (value, id) => ({ type: SET_LOADING, value, id });
 
 export default usersReducer;
