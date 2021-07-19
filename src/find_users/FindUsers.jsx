@@ -5,7 +5,8 @@ import q from "./FindUsers.module.css"
 import defaultAva from "../assets/photo.png"
 import Preloader from '../preloader/Preloader';
 import { NavLink } from 'react-router-dom';
-import { getUsers } from '../api/api';
+import { usersAPI } from '../api/api';
+import { unFriend } from '../redux/users-reducer';
 
 class FindUsers extends React.Component {
 
@@ -15,33 +16,12 @@ class FindUsers extends React.Component {
     componentDidMount() {
 
 
-        this.props.setIsLoading(true);
-
-        getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-                this.props.setIsLoading(false);
-
-                // let qwe = response.items.map(el => {
-                //     console.log(`el: ${el}
-                //     id: ${el.id}`)
-                //     return el.id
-                // });
-
-                this.props.setLoading(false, response.items.map(el => el.id));
-                this.props.setUsers(response.items);
-                this.props.setTotalUsersCount(response.totalCount);
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
-    onPageChange = (e) => {
+    onPageChange = (pageNumber) => {
 
-        this.props.setPage(e);
-        getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-
-                this.props.setUsers(response.items);
-
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize);
     }
 
 
@@ -83,50 +63,20 @@ class FindUsers extends React.Component {
                                     </div>
 
                                     <div>{u.friend ?
-                                        <button disabled={this.props.Loading.some(id => id === u.id)} onClick={() => {
-                                            this.props.setLoading(true, u.id);
-                                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
 
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": "4bfabc4e-fb16-4cce-b138-421ee880ae4d"
-                                                }
+                                        <button disabled={this.props.Loading.some(id => id === u.id)}
+                                            onClick={() => { this.props.unFriend(u.id) }} >
+                                            Remove from a friend list
+                                        </button>
 
-                                            })
-                                                .then(response => {
-                                                    if (response.data.resultCode === 0) {
+                                        :
 
-                                                        this.props.unFriend(u.id);
-                                                    }
+                                        <button disabled={this.props.Loading.some(id => id === u.id)}
+                                            onClick={() => { this.props.friend(u.id) }}>
+                                            Add to friend list
 
-                                                    this.props.setLoading(false, u.id);
-                                                })
+                                        </button>}
 
-
-                                        }} >
-                                            Remove from a friend list</button> :
-
-                                        <button disabled={this.props.Loading.some(id => id === u.id)} onClick={() => {
-                                            this.props.setLoading(true, u.id);
-                                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-
-                                                withCredentials: true,
-                                                headers: {
-                                                    "API-KEY": "4bfabc4e-fb16-4cce-b138-421ee880ae4d"
-                                                }
-
-                                            })
-                                                .then(response => {
-                                                    if (response.data.resultCode === 0) {
-
-                                                        this.props.friend(u.id);
-                                                    }
-
-                                                    this.props.setLoading(false, u.id);
-                                                })
-
-
-                                        }}>Add to friend list</button>}
                                     </div>
 
                                     <span>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { friend, setPage, setUsers, unFriend, setTotalUsersCount, setIsLoading, setLoading } from '../redux/users-reducer';
+import { friend, setPage, setUsers, unFriend, setTotalUsersCount, setIsLoading, setLoading, getUsers } from '../redux/users-reducer';
 import FindUsers from './FindUsers';
 
 let StateToProps = (state) => {
@@ -38,6 +38,6 @@ let StateToProps = (state) => {
 //     }
 // }
 
-let FindUsersContainer = connect(StateToProps, { friend, unFriend, setUsers, setPage, setTotalUsersCount, setIsLoading, setLoading })(FindUsers);
+let FindUsersContainer = connect(StateToProps, { friend, unFriend, setUsers, setPage, setTotalUsersCount, setIsLoading, setLoading, getUsers })(FindUsers);
 
 export default FindUsersContainer;

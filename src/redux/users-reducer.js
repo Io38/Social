@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const FRIEND = 'FRIEND';
 const UNFRIEND = 'UNFRIEND';
 const SET_USERS = "SET-USERS";
@@ -82,12 +84,70 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const friend = (userId) => ({ type: FRIEND, id: userId });
-export const unFriend = (userId) => ({ type: UNFRIEND, id: userId });
+export const acceptFriend = (userId) => ({ type: FRIEND, id: userId });
+export const acceptUnFriend = (userId) => ({ type: UNFRIEND, id: userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setPage = (page) => ({ type: SET_PAGE, page: page });
 export const setTotalUsersCount = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: usersCount });
 export const setIsLoading = (value) => ({ type: SET_IS_LOADING, isLoading: value });
 export const setLoading = (value, id) => ({ type: SET_LOADING, value, id });
+
+
+export const getUsers = (currentPage, pageSize) => {
+
+    return (dispatch) => {
+
+        dispatch(setIsLoading(true));
+
+        usersAPI.downloadUsers(currentPage, pageSize)
+            .then(response => {
+                dispatch(setIsLoading(false));
+
+
+
+                dispatch(setLoading(false, response.items.map(el => el.id)));
+                dispatch(setUsers(response.items));
+                dispatch(setTotalUsersCount(response.totalCount));
+            })
+    }
+}
+
+export const friend = (id) => {
+    debugger
+    return (dispatch) => {
+
+        dispatch(setLoading(true, id));
+
+        usersAPI.friend(id)
+            .then(response => {
+
+                if (response.data.resultCode === 0) {
+
+                    dispatch(acceptFriend(id));
+                }
+
+                dispatch(setLoading(false, id));
+            })
+
+    }
+}
+
+export const unFriend = (id) => {
+
+    return (dispatch) => {
+
+        dispatch(setLoading(true, id));
+        usersAPI.unFriend(id)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+
+                    dispatch(acceptUnFriend(id));
+                }
+
+                dispatch(setLoading(false, id));
+            })
+
+    }
+}
 
 export default usersReducer;
