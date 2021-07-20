@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css"
-import Header from "./components/header/Header";
 import Side from "./components/sideBar/Side";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import { BrowserRouter, Route } from "react-router-dom";

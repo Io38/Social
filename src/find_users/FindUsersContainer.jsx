@@ -13,30 +13,6 @@ let StateToProps = (state) => {
     }
 }
 
-// let DispatchToProps = (dispatch) => {
-//     return {
-//         friend: (userId) => {
-
-//             dispatch(friendAC(userId));
-//         },
-//         unFriend: (userId) => {
-//             dispatch(unFriendAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setPage: (page) => {
-//             dispatch(setPageAC(page));
-//         },
-//         setTotalUsersCount: (usersCount) => {
-//             dispatch(setTotalUsersCountAC(usersCount));
-//         },
-//         setIsLoading: (value) => {
-//             dispatch(setIsLoadingAC(value));
-//         }
-
-//     }
-// }
 
 let FindUsersContainer = connect(StateToProps, { friend, unFriend, setUsers, setPage, setTotalUsersCount, setIsLoading, setLoading, getUsers })(FindUsers);
 

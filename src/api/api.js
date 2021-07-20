@@ -24,17 +24,27 @@ export const usersAPI = {
 
     downloadUsers(currentPage = 1, pageSize = 5) {
 
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+        return instance.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     },
 
     friend(id) {
-        return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`);
+        return instance.post(`follow/${id}`);
     },
 
     unFriend(id) {
-        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`);
+        return instance.delete(`follow/${id}`);
+    },
+
+    getProfile(userId) {
+        return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
     }
 }
 
+export const authAPI = {
 
+    me() {
+        return instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
+
+    }
+}
