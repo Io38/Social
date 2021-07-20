@@ -12,7 +12,8 @@ let mapStateToProps = (state) => {
 
         partnersElements: state.messages.partnersData.map(el => <Partners name={el.name} count={el.count} />),
         messagesElements: state.messages.messagesData.map(el => <MESSAGE_HISTORY text={el.text} />),
-        newMessageText: state.messages.newMessageText
+        newMessageText: state.messages.newMessageText,
+        isAuth: state.auth.isAuth
     }
 }
 
