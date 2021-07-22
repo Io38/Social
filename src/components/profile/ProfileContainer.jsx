@@ -22,7 +22,7 @@ class ProfileContainer extends React.Component {
 
 
     render() {
-        if (!this.props.isAuth) return <Redirect to={'/login'} />;
+        // if (!this.props.isAuth) return <Redirect to={'/login'} />;
         return <Profile {...this.props} profile={this.props.profile} />
     }
 }

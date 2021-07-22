@@ -2,12 +2,15 @@ import React from 'react';
 import Preloader from '../../preloader/Preloader';
 import q from './ProfileInfo.module.css';
 import defaultAva from "../../assets/photo.png"
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
+
     if (!props.profile) {
 
         return <Preloader />
     }
+
     return (
 
         <div>
@@ -18,9 +21,8 @@ const ProfileInfo = (props) => {
             </div>
 
             <div>{props.profile.fullName}</div>
-            <div>{props.profile.aboutMe}</div>
 
-
+            <ProfileStatus aboutMe={props.profile.aboutMe} />
 
 
         </div>
