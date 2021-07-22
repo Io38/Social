@@ -2,10 +2,6 @@ import * as axios from "axios";
 
 
 
-
-
-
-
 const instance = axios.create(
     {
         baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -22,9 +18,10 @@ const instance = axios.create(
 
 export const usersAPI = {
 
+
     downloadUsers(currentPage = 1, pageSize = 5) {
 
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     },
 
@@ -37,14 +34,30 @@ export const usersAPI = {
     },
 
     getProfile(userId) {
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+        return profileAPI.getProfile(userId);
     }
 }
 
 export const authAPI = {
 
     me() {
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
+        return instance.get(`auth/me`)
+
+    }
+}
+
+export const profileAPI = {
+
+    getProfile(userId) {
+        return instance.get(`profile/` + userId)
+
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId)
+
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, { status })
 
     }
 }

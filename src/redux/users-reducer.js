@@ -113,7 +113,7 @@ export const getUsers = (currentPage, pageSize) => {
 }
 
 export const friend = (id) => {
-    debugger
+
     return (dispatch) => {
 
         dispatch(setLoading(true, id));
