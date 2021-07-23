@@ -7,7 +7,7 @@ import FindUsersContainer from "./find_users/FindUsersContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
 import Login from "./login/login";
-
+import './App.css'
 
 
 

@@ -36,7 +36,7 @@ class FindUsers extends React.Component {
             pages.push(i);
         }
 
-        return (<>
+        return (<div>
 
             {this.props.isLoading ? <Preloader /> : <div>
 
@@ -113,7 +113,7 @@ class FindUsers extends React.Component {
 
             </div>
             }
-        </>
+        </div>
 
         );
 
