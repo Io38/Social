@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
-import * as axios from 'axios';
 import React from 'react';
 import q from "./FindUsers.module.css"
 import defaultAva from "../assets/photo.png"
 import Preloader from '../preloader/Preloader';
 import { NavLink } from 'react-router-dom';
-import { usersAPI } from '../api/api';
-import { unFriend } from '../redux/users-reducer';
+
 
 class FindUsers extends React.Component {
 
