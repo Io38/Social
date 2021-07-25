@@ -1,5 +1,17 @@
-.error{
+.error {
 
-    border: #d45252 3px solid;
+    border: #d45252 solid;
+    border-width: 1px 0px 1px 0px;
     color: red;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.error span {
+    position: relative;
+
+
 }
