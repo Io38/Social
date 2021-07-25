@@ -1,67 +1,101 @@
 import {useFormik} from "formik";
-import {login} from "../redux/auth-reducer";
 import React from "react";
 import {Redirect} from "react-router-dom";
+import * as Yup from "yup";
+import q from './loginForm.module.css'
 
- const LoginForm = (props) => {
+const LoginForm = (props, errors, touched) => {
+
 
     const formik = useFormik({
+
         initialValues: {
             email: '',
             password: '',
             rememberMe: ''
         },
+        validationSchema: Yup.object({
+            email: Yup
+                .string()
+                .email('Invalid email address')
+                .required('Please enter your password'),
+            password: Yup
+                .string('')
+                .required('Please enter your password')
+        }),
         onSubmit: (values) => {
 
             props.login(values.email, values.password, values.rememberMe);
         },
-    });
+    })
 
-    if(props.isAuth){
-        return <Redirect to={'/profile'} />
+    if (props.isAuth) {
+        return <Redirect to={'/profile'}/>
     }
-    return (
-        <form onSubmit={formik.handleSubmit}>
-
-            <div>
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder='email'
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                />
-            </div>
-
-            <div>
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder='password'
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                />
-            </div>
-
-            <div>
-                <input
-                    id="rememberMe"
-                    name="rememberMe"
-                    type="checkbox"
-
-                    onChange={formik.handleChange}
-                    value={formik.values.checkbox}
-                />Remember me
-            </div>
-
-            <div>
-                <button type="submit">Sign in</button>
-            </div>
 
 
-        </form>
+    return (<div className={q.form}>
+            <form onSubmit={formik.handleSubmit}>
+
+                <div className={q.item}>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder='email'
+                        onChange={formik.handleChange}
+                        value={formik.values.email}
+
+                    />
+                    {
+                        (formik.touched.email && formik.errors.email) ?
+                            <div className={q.error}>
+                                <label>{formik.errors.email}</label>
+                            </div>
+                            :
+                            null
+                    }
+
+                </div>
+
+                <div className={q.item}>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder='password'
+                        onChange={formik.handleChange}
+                        value={formik.values.password}
+                    />
+                    {
+                        (formik.touched.password && formik.errors.password) ?
+                            <div className={q.error}>
+                                <label>{formik.errors.password}</label>
+                            </div>
+                            :
+                            null
+                    }
+                </div>
+
+
+                <div className={q.checkbox}>
+                    <input
+                        id="rememberMe"
+                        name="rememberMe"
+                        type="checkbox"
+                        onChange={formik.handleChange}
+                        value={formik.values.checkbox}
+                    />Remember me
+                </div>
+
+                <div className={q.item}>
+                    <button type="submit">Sign in</button>
+                </div>
+
+
+            </form>
+        </div>
+
     );
 };
 

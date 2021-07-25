@@ -1,0 +1,41 @@
+.error{
+
+    background: #d45252;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    margin-left:8px;
+    padding: 1px 6px;
+    z-index: 999;
+    display: inline;
+
+
+
+
+
+}
+
+
+.form input{
+    padding:12px;
+    border:1px solid #eee;
+    position:relative;
+}
+
+.item{
+    padding: 10px;
+}
+
+.item button{
+
+    background-color: #3c3eff;
+    /*background-color: #68b12f;*/
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+
+}

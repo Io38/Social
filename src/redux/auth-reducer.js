@@ -1,14 +1,16 @@
 import {authAPI} from "../api/api";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
-
+const THROW_ERROR = 'THROW_ERROR';
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
     isFetching: false,
-    isAuth: false
+    isAuth: false,
+    error: false,
+    errorMessage: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -21,7 +23,19 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                
+                error: false,
+                errorMessage: null
+
+            }
+
+        case THROW_ERROR:
+
+
+            return {
+                ...state,
+                error: true,
+                errorMessage: action.message
+
             }
 
         default:
@@ -31,7 +45,15 @@ const authReducer = (state = initialState, action) => {
 
 window.auth = initialState;
 
-export const setAuthUserData = (email, login, userId, isAuth) => ({type: SET_AUTH_USER_DATA, data: {email, login, userId, isAuth}})
+export const setAuthUserData = (email, login, userId, isAuth) => ({
+    type: SET_AUTH_USER_DATA,
+    data: {email, login, userId, isAuth}
+})
+
+export const throwError = (message) => ({
+    type: THROW_ERROR,
+    message
+})
 
 
 export const getAuthUserData = () => {
@@ -43,7 +65,7 @@ export const getAuthUserData = () => {
             if (response.data.resultCode === 0) {
 
                 let {id, login, email} = response.data.data;
-                dispatch(setAuthUserData(id, login, email,true));
+                dispatch(setAuthUserData(id, login, email, true));
 
             }
 
@@ -56,10 +78,14 @@ export const signIn = (email, password, rememberMe) => (dispatch) => {
 
     authAPI.login(email, password, rememberMe)
         .then(response => {
-
+            debugger
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
-                debugger
+
+            } else {
+
+                let message = response.data.messages[0];
+                dispatch(throwError(message));
             }
         })
 }
@@ -69,7 +95,7 @@ export const logout = () => (dispatch) => {
         .then(response => {
 
             if (response.data.resultCode === 0) {
-                setAuthUserData(null, null, null,false);
+                setAuthUserData(null, null, null, false);
 
             }
         })
