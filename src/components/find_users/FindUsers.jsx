@@ -57,7 +57,11 @@ class FindUsers extends React.Component {
                                     </div>
 
                                     <div>
+
+
                                         {
+
+
                                             u.followed ?
 
                                                 <button disabled={this.props.Loading.some(id => id === u.id)}
@@ -66,7 +70,7 @@ class FindUsers extends React.Component {
                                                         }}>
                                                     Remove from a friend list
                                                 </button>
-
+                                                
                                                 :
 
                                                 <button disabled={this.props.Loading.some(id => id === u.id)}
@@ -76,28 +80,29 @@ class FindUsers extends React.Component {
                                                     Add to friend list
 
                                                 </button>
+
                                         }
 
                                     </div>
 
-                                    <span>
+                                            <span>
 
 
-                                        <span>
+                                            <span>
                                             <div>{u.name}</div>
                                             <div>{u.status}</div>
-                                        </span>
+                                            </span>
 
-                                        <span>
+                                            <span>
                                             <div>{`u.location.country`} </div>
                                             <div>{`u.location.city`}</div>
-                                        </span>
+                                            </span>
 
 
-                                    </span>
+                                            </span>
 
 
-                                </span>
+                                            </span>
                                 </ div>)
                     }
 
