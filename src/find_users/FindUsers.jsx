@@ -3,17 +3,15 @@ import React from 'react';
 import q from "./FindUsers.module.css"
 import defaultAva from "../assets/photo.png"
 import Preloader from '../preloader/Preloader';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 class FindUsers extends React.Component {
 
 
-
-
     componentDidMount() {
 
-
+        debugger
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
@@ -36,44 +34,49 @@ class FindUsers extends React.Component {
 
         return (<div>
 
-            {this.props.isLoading ? <Preloader /> : <div>
+                {this.props.isLoading ? <Preloader/> : <div>
 
 
+                    {
+                        this.props.users.map(
+                            u =>
+                                <div key={u.id}>
 
 
-
-                {
-                    this.props.users.map(
-                        u =>
-                            <div key={u.id}>
+                                    <div>
+                                        <span> </span>
+                                    </div>
 
 
-                                <div>
-                                    <span> </span>
-                                </div>
-
-
-                                <span>
+                                    <span>
                                     <div>
                                         <NavLink to={'/profile' + u.id}>
-                                            <img src={u.photos.small == null ? defaultAva : u.photos.small} className={q.ava} />
+                                            <img src={u.photos.small == null ? defaultAva : u.photos.small}
+                                                 className={q.ava}/>
                                         </NavLink>
                                     </div>
 
-                                    <div>{u.friend ?
+                                    <div>
+                                        {
+                                            u.followed ?
 
-                                        <button disabled={this.props.Loading.some(id => id === u.id)}
-                                            onClick={() => { this.props.unFriend(u.id) }} >
-                                            Remove from a friend list
-                                        </button>
+                                                <button disabled={this.props.Loading.some(id => id === u.id)}
+                                                        onClick={() => {
+                                                            this.props.unFriend(u.id)
+                                                        }}>
+                                                    Remove from a friend list
+                                                </button>
 
-                                        :
+                                                :
 
-                                        <button disabled={this.props.Loading.some(id => id === u.id)}
-                                            onClick={() => { this.props.friend(u.id) }}>
-                                            Add to friend list
+                                                <button disabled={this.props.Loading.some(id => id === u.id)}
+                                                        onClick={() => {
+                                                            this.props.friend(u.id)
+                                                        }}>
+                                                    Add to friend list
 
-                                        </button>}
+                                                </button>
+                                        }
 
                                     </div>
 
@@ -95,23 +98,23 @@ class FindUsers extends React.Component {
 
 
                                 </span>
-                            </ div>)
-                }
+                                </ div>)
+                    }
 
-                <div className={q.pages}>
+                    <div className={q.pages}>
 
-                    {pages.map(e => {
-                        return <span onClick={() => {
-                            this.onPageChange(e)
-                        }}
-                            className={this.props.currentPage === e && q.activePage}>{e}   </span>
-                    })}
+                        {pages.map(e => {
+                            return <span onClick={() => {
+                                this.onPageChange(e)
+                            }}
+                                         className={this.props.currentPage === e && q.activePage}>{e}   </span>
+                        })}
+                    </div>
+
+
                 </div>
-
-
+                }
             </div>
-            }
-        </div>
 
         );
 

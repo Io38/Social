@@ -28,7 +28,7 @@ const usersReducer = (state = initialState, action) => {
 
                     if (u.id === action.id) {
 
-                        return { ...u, friend: true }
+                        return { ...u, followed: true }
                     }
                     return u;
                 })
@@ -41,7 +41,7 @@ const usersReducer = (state = initialState, action) => {
 
                     if (u.id === action.id) {
 
-                        return { ...u, friend: false }
+                        return { ...u, followed: false }
                     }
                     return u;
                 })
@@ -98,14 +98,13 @@ export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
 
         dispatch(setIsLoading(true));
-
+dispatch(setPage(currentPage))
         usersAPI.downloadUsers(currentPage, pageSize)
             .then(response => {
+
                 dispatch(setIsLoading(false));
-
-
-
                 dispatch(setLoading(false, response.items.map(el => el.id)));
+
                 dispatch(setUsers(response.items));
                 dispatch(setTotalUsersCount(response.totalCount));
             })
@@ -137,6 +136,7 @@ export const unFriend = (id) => {
     return (dispatch) => {
 
         dispatch(setLoading(true, id));
+
         usersAPI.unFriend(id)
             .then(response => {
                 if (response.data.resultCode === 0) {
