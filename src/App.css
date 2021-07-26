@@ -3,7 +3,7 @@
 
 width: 1500px;
   display: grid;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 80px 1fr;
   grid-template-columns: 2fr 10fr;
 
   grid-template-areas: 
@@ -30,11 +30,30 @@ button{
   /*background-color: #68b12f;*/
   border: 1px solid #509111;
   border-bottom: 1px solid #5b992b;
-  border-radius: 3px;
+  border-radius: 50px;
   color: white;
   font-weight: bold;
   padding: 6px 20px;
   text-align: center;
   text-shadow: 0 -1px 0 #396715;
+  transition: all 500ms ease
 
+}
+
+button:before {
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 42px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 5px;
+  transition: all 1s ease;
+}
+
+button:hover {
+  border: 3px solid #3a7999;
+  color: #3a7999;
+  background: rgba(0,0,0,0);
 }

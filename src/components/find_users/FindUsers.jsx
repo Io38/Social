@@ -70,7 +70,7 @@ class FindUsers extends React.Component {
                                                         }}>
                                                     Remove from a friend list
                                                 </button>
-                                                
+
                                                 :
 
                                                 <button disabled={this.props.Loading.some(id => id === u.id)}

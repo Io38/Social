@@ -65,7 +65,8 @@ export const getAuthUserData = () => {
             if (response.data.resultCode === 0) {
 
                 let {id, login, email} = response.data.data;
-                dispatch(setAuthUserData(email, login, id, email, true));
+                dispatch(setAuthUserData(email, login, id, true));
+                debugger
 
             }
 

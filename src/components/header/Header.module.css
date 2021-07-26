@@ -1,19 +1,53 @@
-.header{
+.header {
 
-  grid-area: head;
-  background-color: aqua;
+    grid-area: head;
+    background-color: aqua;
 }
 
 
-.header img{
+.header img {
 
-  height: 30px;
+    height: 30px;
 }
 
-.login a{
+.right {
+    float: right;
+    width: 100px;
+    padding-top: 15px;
 
-  float: right;
-  color:black;
-  text-decoration: none;
-  font-size: 20px;
+}
+
+.right a {
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.login {
+    text-align: center;
+    transition: all 2s ease;
+
+}
+
+.login :hover {
+    background: #d45252;
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #3a7999;
+    padding: 8px;
+    transition: all 1s ease;
+}
+
+.profile {
+    padding-bottom: 10px;
+    text-align: center;
+    transition: all 2s ease;
+}
+
+.profile :hover {
+    background: slateblue;
+    color: #eeeeee;
+    box-shadow: inset 0 0 0 3px #3a7999;
+    padding: 8px;
+    transition: all 1s ease;
 }
