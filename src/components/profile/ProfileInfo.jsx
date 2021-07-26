@@ -1,5 +1,5 @@
 import React from 'react';
-import Preloader from '../../preloader/Preloader';
+import Preloader from '../preloader/Preloader';
 import q from './ProfileInfo.module.css';
 import defaultAva from "../../assets/photo.png"
 import ProfileStatus from './ProfileStatus';

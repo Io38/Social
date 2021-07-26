@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from "./loginForm";
-import {signIn} from "../redux/auth-reducer";
+import {signIn} from "../../redux/auth-reducer";
 import {connect} from "react-redux";
 import q from './login.module.css';
 

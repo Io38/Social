@@ -3,16 +3,16 @@ import "./App.css"
 import Side from "./components/sideBar/Side";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import { Route, withRouter} from "react-router-dom";
-import FindUsersContainer from "./find_users/FindUsersContainer";
+import FindUsersContainer from "./components/find_users/FindUsersContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
-import Login from "./login/login";
+import Login from "./components/login/login";
 import './App.css'
 import {connect} from "react-redux";
 
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
-import Preloader from "./preloader/Preloader";
+import Preloader from "./components/preloader/Preloader";
 
 
 class App extends React.Component {

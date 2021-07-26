@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import q from "./FindUsers.module.css"
-import defaultAva from "../assets/photo.png"
+import defaultAva from "../../assets/photo.png"
 import Preloader from '../preloader/Preloader';
 import {NavLink} from 'react-router-dom';
 

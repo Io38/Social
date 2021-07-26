@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../HOC/withAuthRedirect';
-import { friend, setPage, setUsers, unFriend, setTotalUsersCount, setIsLoading, setLoading, getUsers } from '../redux/users-reducer';
+import { withAuthRedirect } from '../../HOC/withAuthRedirect';
+import { friend, setPage, setUsers, unFriend, setTotalUsersCount, setIsLoading, setLoading, getUsers } from '../../redux/users-reducer';
 import FindUsers from './FindUsers';
 
 let StateToProps = (state) => {
