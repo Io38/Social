@@ -34,21 +34,26 @@ class FindUsers extends React.Component {
 
         return (<div>
 
-                {this.props.isLoading ? <Preloader/> : <div>
+                {
+                    this.props.isLoading
+                        ?
+                        <Preloader/>
+                        :
+                        <div className={q.users}>
 
 
-                    {
-                        this.props.users.map(
-                            u =>
-                                <div key={u.id}>
+                            {
+                                this.props.users.map(
+                                    u =>
+                                        <div key={u.id}>
 
 
-                                    <div>
-                                        <span> </span>
-                                    </div>
+                                            <div>
+                                                <span> </span>
+                                            </div>
 
 
-                                    <span>
+                                            <span>
                                     <div>
                                         <NavLink to={'/profile' + u.id}>
                                             <img src={u.photos.small == null ? defaultAva : u.photos.small}
@@ -64,7 +69,7 @@ class FindUsers extends React.Component {
 
                                             u.followed ?
 
-                                                <button disabled={this.props.Loading.some(id => id === u.id)}
+                                                <button className={q.btn} disabled={this.props.Loading.some(id => id === u.id)}
                                                         onClick={() => {
                                                             this.props.unFriend(u.id)
                                                         }}>
@@ -103,21 +108,21 @@ class FindUsers extends React.Component {
 
 
                                             </span>
-                                </ div>)
-                    }
+                                        </ div>)
+                            }
 
-                    <div className={q.pages}>
+                            <div className={q.pages}>
 
-                        {pages.map(e => {
-                            return <span onClick={() => {
-                                this.onPageChange(e)
-                            }}
-                                         className={this.props.currentPage === e && q.activePage}>{e}   </span>
-                        })}
-                    </div>
+                                {pages.map(e => {
+                                    return <span onClick={() => {
+                                        this.onPageChange(e)
+                                    }}
+                                                 className={this.props.currentPage === e && q.activePage}>{e}   </span>
+                                })}
+                            </div>
 
 
-                </div>
+                        </div>
                 }
             </div>
 

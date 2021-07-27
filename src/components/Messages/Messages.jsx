@@ -1,9 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import q from './Messages.module.css'
-
-
-
 
 
 const Messages = (props) => {
@@ -23,7 +20,7 @@ const Messages = (props) => {
 
 
     if (!props.isAuth)
-        return <Redirect to={'/login'} />
+        return <Redirect to={'/login'}/>
 
     return (
         <div className={q.messages}>
@@ -45,22 +42,29 @@ const Messages = (props) => {
 
                 <div>
 
-                    <div>
-                        <textarea
-                            placeholder="Enter message"
-                            value={props.newMessageText}
-                            onChange={onUpdateNewMessageText} />
+
+                    <div className={q.sendMessage}>
+
+                        <div>
+
+                            <textarea
+                                placeholder="Enter message"
+                                value={props.newMessageText}
+                                onChange={onUpdateNewMessageText}/>
+                        </div>
+
+                        <div>
+                            <button onClick={onSendMessage}>Send</button>
+                        </div>
+
                     </div>
 
-                    <div>
-                        <button onClick={onSendMessage}>Send</button>
-                    </div>
 
                 </div>
 
             </div>
 
-        </div >
+        </div>
     );
 }
 
