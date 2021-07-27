@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import  q from './ProfileStatus.module.css';
 
 const ProfileStatusWithHooks = (props) => {
 
@@ -38,7 +38,7 @@ useEffect(()=>{
                     ?
                     <input onBlur={editModeOff} autoFocus value={status} onChange={onStatusChange}/>
                     :
-                    <span onClick={editModeOn}>{status}</span>
+                    <span className={q.item} onClick={editModeOn}>{status}</span>
             }
 
 

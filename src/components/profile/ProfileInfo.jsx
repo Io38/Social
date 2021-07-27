@@ -2,7 +2,7 @@ import React from 'react';
 import Preloader from '../preloader/Preloader';
 import q from './ProfileInfo.module.css';
 import defaultAva from "../../assets/photo.png"
-import ProfileStatus from './ProfileStatus';
+import pencil from "../../assets/pencil.png"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
@@ -14,7 +14,8 @@ const ProfileInfo = (props) => {
 
     return (
 
-        <div>
+        <div className={q.all}>
+
             <div className={q.avatarka}>
 
                 <img src={!props.profile.photos.large ? defaultAva : props.profile.photos.large}
@@ -23,10 +24,20 @@ const ProfileInfo = (props) => {
                 </img>
             </div>
 
-            <div>{props.profile.fullName}</div>
+            <div className={q.description}>
+                <div className={q.name}>
+                    <h2>Name</h2>
+                    <div className={q.item}>{props.profile.fullName}</div>
+                </div>
 
-            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                <h3>Status</h3>
+                <div className={q.status}>
 
+                    <img src={pencil} alt=""/>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                </div>
+
+            </div>
 
         </div>
     );

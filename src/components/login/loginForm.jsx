@@ -85,10 +85,11 @@ const LoginForm = (props, errors, touched) => {
                         type="checkbox"
                         onChange={formik.handleChange}
                         value={formik.values.checkbox}
-                    />Remember me
+                    />
+                    <span>Remember me</span>
                 </div>
 
-                <div className={q.item}>
+                <div>
                     <button type="submit">Sign in</button>
                 </div>
 

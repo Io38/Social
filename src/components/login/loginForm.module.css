@@ -1,28 +1,51 @@
-.error{
+.error {
 
     background: #d45252;
     border-radius: 3px 3px 3px 3px;
     color: white;
-    margin-left:8px;
+    margin-left: 8px;
     padding: 1px 6px;
     z-index: 999;
     display: inline;
 
 
-
-
-
 }
 
 
-.form input{
-    padding:12px;
-    border:1px solid #eee;
-    position:relative;
+.form input {
+    padding: 12px;
+    border: 1px solid #eee;
+    position: relative;
 }
 
-.item{
+.item {
     padding: 10px;
 }
 
+.item button {
+    height: 42px;
+    width: 73px;
 
+}
+
+.checkbox {
+
+    width: 110px;
+    display: flex;
+
+
+
+}
+
+.checkbox span {
+    padding-left: 0;
+    width: 60px;
+    white-space: nowrap;
+    font-size: 22px;
+    align-self:center;
+}
+
+button {
+    margin-left: 10px;
+    margin-top: 8px;
+}

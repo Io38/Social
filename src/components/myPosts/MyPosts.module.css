@@ -1,0 +1,23 @@
+.posts {
+
+    display: flex;
+}
+
+.myPosts{
+
+    margin-left: 50px;
+}
+
+.posts textarea{
+
+
+    width: 200px;
+border-radius: 10px;
+    box-shadow:0 0 15px 12px rgba(0,0,0,0.06);
+
+
+}
+
+.posts button{
+
+}

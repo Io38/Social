@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import q from './Header.module.css';
 
 const Header = (props) => {
-    debugger
+
     return (
         <header className={q.header}>
 
