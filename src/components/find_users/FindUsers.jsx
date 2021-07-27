@@ -11,7 +11,7 @@ class FindUsers extends React.Component {
 
     componentDidMount() {
 
-        debugger
+        
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 

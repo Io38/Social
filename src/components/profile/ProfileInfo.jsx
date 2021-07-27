@@ -33,8 +33,16 @@ const ProfileInfo = (props) => {
                 <h3>Status</h3>
                 <div className={q.status}>
 
-                    <img src={pencil} alt=""/>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                    {
+                        props.authorizedUserId === props.profile.userId
+
+                            ?
+                            <img src={pencil} alt=""/>
+                            :
+                            null
+                    }
+
+                    <ProfileStatusWithHooks userId={props.profile.userId} authorizedUserId={props.authorizedUserId} status={props.status} updateStatus={props.updateStatus}/>
                 </div>
 
             </div>
