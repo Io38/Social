@@ -2,11 +2,14 @@
 .avatar {
 
     border-radius: 50%;
+
+
 }
 
 .all {
 
     display: flex;
+
 }
 
 .status{
@@ -43,7 +46,7 @@
 
 
 .description {
-
+margin-left: 10px;
     width: 100%;
 }
 
