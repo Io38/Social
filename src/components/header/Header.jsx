@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import q from './Header.module.css';
 
 const Header = (props) => {
@@ -23,7 +23,8 @@ const Header = (props) => {
 
 
                         <div className={q.login} onClick={props.logout}>
-                            <NavLink to='/profile'>logout</NavLink>
+                            <NavLink to='/login'>logout</NavLink>
+
                         </div>
 
                     </div>

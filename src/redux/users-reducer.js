@@ -1,4 +1,4 @@
-import { usersAPI } from "../api/api";
+import {usersAPI} from "../api/api";
 
 const FRIEND = 'FRIEND';
 const UNFRIEND = 'UNFRIEND';
@@ -28,7 +28,7 @@ const usersReducer = (state = initialState, action) => {
 
                     if (u.id === action.id) {
 
-                        return { ...u, followed: true }
+                        return {...u, followed: true}
                     }
                     return u;
                 })
@@ -41,7 +41,7 @@ const usersReducer = (state = initialState, action) => {
 
                     if (u.id === action.id) {
 
-                        return { ...u, followed: false }
+                        return {...u, followed: false}
                     }
                     return u;
                 })
@@ -77,75 +77,75 @@ const usersReducer = (state = initialState, action) => {
                     state.Loading.filter(id => id !== action.id)
             }
 
-        default: return state;
+        default:
+            return state;
 
 
     }
 
 }
-
-export const acceptFriend = (userId) => ({ type: FRIEND, id: userId });
-export const acceptUnFriend = (userId) => ({ type: UNFRIEND, id: userId });
-export const setUsers = (users) => ({ type: SET_USERS, users });
-export const setPage = (page) => ({ type: SET_PAGE, page: page });
-export const setTotalUsersCount = (usersCount) => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: usersCount });
-export const setIsLoading = (value) => ({ type: SET_IS_LOADING, isLoading: value });
-export const setLoading = (value, id) => ({ type: SET_LOADING, value, id });
+export const acceptFriend = (userId) => ({type: FRIEND, id: userId});
+export const acceptUnFriend = (userId) => ({type: UNFRIEND, id: userId});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setPage = (page) => ({type: SET_PAGE, page: page});
+export const setTotalUsersCount = (usersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount: usersCount});
+export const setIsLoading = (value) => ({type: SET_IS_LOADING, isLoading: value});
+export const setLoading = (value, id) => ({type: SET_LOADING, value, id});
 
 
 export const getUsers = (currentPage, pageSize) => {
 
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(setIsLoading(true));
-dispatch(setPage(currentPage))
-        usersAPI.downloadUsers(currentPage, pageSize)
-            .then(response => {
+        dispatch(setPage(currentPage));
 
-                dispatch(setIsLoading(false));
-                dispatch(setLoading(false, response.items.map(el => el.id)));
+        let response = await usersAPI.downloadUsers(currentPage, pageSize)
 
-                dispatch(setUsers(response.items));
-                dispatch(setTotalUsersCount(response.totalCount));
-            })
+
+        dispatch(setIsLoading(false));
+        dispatch(setLoading(false, response.items.map(el => el.id)));
+
+        dispatch(setUsers(response.items));
+        dispatch(setTotalUsersCount(response.totalCount));
+
     }
 }
 
 export const friend = (id) => {
 
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(setLoading(true, id));
 
-        usersAPI.friend(id)
-            .then(response => {
+        let response = await usersAPI.friend(id)
 
-                if (response.data.resultCode === 0) {
+        if (response.data.resultCode === 0) {
 
-                    dispatch(acceptFriend(id));
-                }
+            dispatch(acceptFriend(id));
+        }
 
-                dispatch(setLoading(false, id));
-            })
+        dispatch(setLoading(false, id));
+
 
     }
 }
 
 export const unFriend = (id) => {
 
-    return (dispatch) => {
+    return async (dispatch) => {
 
         dispatch(setLoading(true, id));
 
-        usersAPI.unFriend(id)
-            .then(response => {
-                if (response.data.resultCode === 0) {
+        let response = await usersAPI.unFriend(id)
 
-                    dispatch(acceptUnFriend(id));
-                }
+        if (response.data.resultCode === 0) {
 
-                dispatch(setLoading(false, id));
-            })
+            dispatch(acceptUnFriend(id));
+        }
+
+        dispatch(setLoading(false, id));
+           
 
     }
 }

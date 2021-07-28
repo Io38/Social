@@ -58,48 +58,47 @@ export const throwError = (message) => ({
 
 export const getAuthUserData = () => {
 
-    return (dispatch) => {
+    return async (dispatch) => {
 
-        return authAPI.me().then(response => {
+        let response = await authAPI.me()
 
-            if (response.data.resultCode === 0) {
+        if (response.data.resultCode === 0) {
 
-                let {id, login, email} = response.data.data;
-                dispatch(setAuthUserData(email, login, id, true));
+            let {id, login, email} = response.data.data;
+            dispatch(setAuthUserData(email, login, id, true));
+        }
 
 
-            }
-
-        })
     }
 
 }
 
-export const signIn = (email, password, rememberMe) => (dispatch) => {
+export const signIn = (email, password, rememberMe) => async (dispatch) => {
 
-    authAPI.login(email, password, rememberMe)
-        .then(response => {
+    let response = await authAPI.login(email, password, rememberMe)
 
-            if (response.data.resultCode === 0) {
-                dispatch(getAuthUserData())
 
-            } else {
+    if (response.data.resultCode === 0) {
 
-                let message = response.data.messages[0];
-                dispatch(throwError(message));
-            }
-        })
+        dispatch(getAuthUserData())
+    } else {
+
+        let message = response.data.messages[0];
+        dispatch(throwError(message));
+    }
+
 }
 
-export const logout = () => (dispatch) => {
-    authAPI.logout()
-        .then(response => {
+export const logout = () => async (dispatch) => {
+    let response = await authAPI.logout()
 
-            if (response.data.resultCode === 0) {
-                setAuthUserData(null, null, null, false);
+    if (response.data.resultCode === 0) {
 
-            }
-        })
+        setAuthUserData(null, null, null, false);
+
+    }
+    window.location.reload();
+
 }
 
 
