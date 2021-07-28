@@ -4,6 +4,7 @@ import q from "./FindUsers.module.css"
 import defaultAva from "../../assets/photo.png"
 import Preloader from '../preloader/Preloader';
 import {NavLink} from 'react-router-dom';
+import Paginator from "./Paginator";
 
 
 class FindUsers extends React.Component {
@@ -69,7 +70,8 @@ class FindUsers extends React.Component {
 
                                             u.followed ?
 
-                                                <button className={q.btn} disabled={this.props.Loading.some(id => id === u.id)}
+                                                <button className={q.btn}
+                                                        disabled={this.props.Loading.some(id => id === u.id)}
                                                         onClick={() => {
                                                             this.props.unFriend(u.id)
                                                         }}>
@@ -90,7 +92,7 @@ class FindUsers extends React.Component {
 
                                     </div>
 
-                                            <span>
+                                            <span className={q.userDescription}>
 
 
                                             <span>
@@ -98,10 +100,10 @@ class FindUsers extends React.Component {
                                             <div>{u.status}</div>
                                             </span>
 
-                                            <span>
-                                            <div>{`u.location.country`} </div>
-                                            <div>{`u.location.city`}</div>
-                                            </span>
+                                            {/*<span>*/}
+                                            {/*<div>{`u.location.country`} </div>*/}
+                                            {/*<div>{`u.location.city`}</div>*/}
+                                            {/*</span>*/}
 
 
                                             </span>
@@ -110,16 +112,10 @@ class FindUsers extends React.Component {
                                             </span>
                                         </ div>)
                             }
-
-                            <div className={q.pages}>
-
-                                {pages.map(e => {
-                                    return <span onClick={() => {
-                                        this.onPageChange(e)
-                                    }}
-                                                 className={this.props.currentPage === e && q.activePage}>{e}   </span>
-                                })}
-                            </div>
+                            <Paginator onPageChange={this.onPageChange}
+                                       currentPage={this.props.currentPage}
+                                       totalUsersCount={this.props.totalUsersCount}
+                                       pageSize={this.props.pageSize}/>
 
 
                         </div>

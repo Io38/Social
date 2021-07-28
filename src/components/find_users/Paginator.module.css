@@ -1,0 +1,40 @@
+.activePage {
+
+    text-decoration: underline;
+}
+
+.pages {
+
+    text-align: center;
+    cursor: pointer;
+    margin-right: 40px;
+
+}
+
+.pages span {
+
+    padding-right: 15px;
+    padding-left: 15px;
+    border: #d45252 2px solid;
+}
+
+.paginator {
+
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.first {
+    margin-right: 20px;
+}
+
+.second {
+    margin-left: 90px;
+}
+
+button:active {
+    background-color: #333;
+    border-color: #333;
+    color: #eee;
+}
