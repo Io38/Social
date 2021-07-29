@@ -1,6 +1,7 @@
 .activePage {
 
-    text-decoration: underline;
+    background-color: #65656d;
+    color: #eeeeee;
 }
 
 .pages {
@@ -38,3 +39,6 @@ button:active {
     border-color: #333;
     color: #eee;
 }
+
+
+

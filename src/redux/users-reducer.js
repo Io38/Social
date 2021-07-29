@@ -10,7 +10,7 @@ const SET_LOADING = "SET_LOADING";
 
 let initialState = {
     users: [],
-    pageSize: 8,
+    pageSize: 4,
     totalUsersCount: 0,
     currentPage: 1,
     isLoading: true,
@@ -145,7 +145,7 @@ export const unFriend = (id) => {
         }
 
         dispatch(setLoading(false, id));
-           
+
 
     }
 }

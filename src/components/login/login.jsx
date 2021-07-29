@@ -7,7 +7,7 @@ import q from './login.module.css';
 const Login = (props) => {
     return (<div>
 
-        <h1>LOGIN</h1>
+        <h1 className={q.login}>LOGIN</h1>
         {
             props.error
                 ?
