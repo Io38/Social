@@ -34,7 +34,6 @@
     display: flex;
 
 
-
 }
 
 .checkbox span {
@@ -42,10 +41,21 @@
     width: 60px;
     white-space: nowrap;
     font-size: 22px;
-    align-self:center;
+    align-self: center;
 }
 
 button {
     margin-left: 10px;
     margin-top: 8px;
+}
+
+.captcha .item {
+
+    width: 300px;
+}
+
+.captcha img {
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 50px;
 }

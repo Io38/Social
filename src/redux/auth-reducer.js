@@ -1,7 +1,8 @@
-import {authAPI} from "../api/api";
+import {authAPI, securityAPI} from "../api/api";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const THROW_ERROR = 'THROW_ERROR';
+const SET_CAPTCHA = 'SET_CAPTCHA';
 
 let initialState = {
     userId: null,
@@ -10,7 +11,8 @@ let initialState = {
     isFetching: false,
     isAuth: false,
     error: false,
-    errorMessage: null
+    errorMessage: null,
+    captchaUrl: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -25,6 +27,14 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 error: false,
                 errorMessage: null
+
+            }
+        case SET_CAPTCHA:
+
+
+            return {
+                ...state,
+                captchaUrl: action.captchaUrl
 
             }
 
@@ -55,6 +65,19 @@ export const throwError = (message) => ({
     message
 })
 
+export const setCaptcha = (captchaUrl) => ({
+    type: SET_CAPTCHA,
+    captchaUrl
+})
+
+
+export const getCaptcha = () => async (dispatch) => {
+
+    const response = await securityAPI.getCaptcha();
+    const captchaUrl = response.data.url;
+    dispatch(setCaptcha(captchaUrl));
+}
+
 
 export const getAuthUserData = () => {
 
@@ -73,9 +96,9 @@ export const getAuthUserData = () => {
 
 }
 
-export const signIn = (email, password, rememberMe) => async (dispatch) => {
-
-    let response = await authAPI.login(email, password, rememberMe)
+export const signIn = (email, password, rememberMe, captcha) => async (dispatch) => {
+    debugger
+    let response = await authAPI.login(email, password, rememberMe,captcha)
 
 
     if (response.data.resultCode === 0) {
@@ -83,7 +106,14 @@ export const signIn = (email, password, rememberMe) => async (dispatch) => {
         dispatch(getAuthUserData())
     } else {
 
+
+        if (response.data.resultCode === 10) {
+            dispatch(getCaptcha());
+        }
+
         let message = response.data.messages[0];
+
+
         dispatch(throwError(message));
     }
 

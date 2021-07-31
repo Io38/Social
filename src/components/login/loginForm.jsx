@@ -12,20 +12,22 @@ const LoginForm = (props, errors, touched) => {
         initialValues: {
             email: '',
             password: '',
-            rememberMe: ''
+            rememberMe: '',
+            captcha: ''
         },
         validationSchema: Yup.object({
             email: Yup
                 .string()
                 .email('Invalid email address')
-                .required('Please enter your password'),
+                .required('Please enter your email'),
             password: Yup
                 .string('')
-                .required('Please enter your password')
+                .required('Please enter your password'),
+
         }),
         onSubmit: (values) => {
-
-            props.login(values.email, values.password, values.rememberMe);
+            console.log(values);
+            props.login(values.email, values.password, values.rememberMe,values.captcha);
         },
     })
 
@@ -88,6 +90,34 @@ const LoginForm = (props, errors, touched) => {
                     />
                     <span>Remember me</span>
                 </div>
+
+                {
+                    (props.captchaUrl)
+                        ?
+                        <div className={q.captcha}>
+
+
+                            <img src={props.captchaUrl}/>
+
+                            <div className={q.item}>
+                                <input
+                                    id="captcha"
+                                    name="captcha"
+                                    type="text"
+                                    placeholder='captcha'
+                                    onChange={formik.handleChange}
+                                    value={formik.values.captcha}
+                                />
+
+
+                            </div>
+
+
+                        </div>
+                        :
+                        null
+                }
+
 
                 <div>
                     <button type="submit">Sign in</button>

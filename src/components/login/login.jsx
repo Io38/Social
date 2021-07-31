@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import q from './login.module.css';
 
 const Login = (props) => {
+
+
     return (<div>
 
         <h1 className={q.login}>LOGIN</h1>
@@ -19,7 +21,7 @@ const Login = (props) => {
         }
 
 
-        <LoginForm login={props.signIn} isAuth={props.isAuth}/>
+        <LoginForm login={props.signIn} isAuth={props.isAuth} captchaUrl={props.captchaUrl}/>
 
 
     </div>)
@@ -29,6 +31,7 @@ const Login = (props) => {
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     error: state.auth.error,
-    errorMessage: state.auth.errorMessage
+    errorMessage: state.auth.errorMessage,
+    captchaUrl: state.auth.captchaUrl
 })
 export default connect(mapStateToProps, {signIn})(Login);
