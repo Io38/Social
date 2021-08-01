@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css"
 import Side from "./components/sideBar/Side";
 import MessagesContainer from "./components/Messages/MessagesContainer";
-import { Route, withRouter} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import FindUsersContainer from "./components/find_users/FindUsersContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
@@ -40,6 +40,9 @@ componentDidMount() {
 
               <Route path="/profile:userId?"
                      render={() => <ProfileContainer/>}/>
+
+                <Route exact path="/"
+                     render={() => <Redirect to={'/profile'}/>} />
 
               <Route path="/Messages"
                      render={() => <MessagesContainer/>}/>
