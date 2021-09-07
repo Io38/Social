@@ -1,5 +1,4 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 import q from './Messages.module.css'
 
 
@@ -19,8 +18,7 @@ const Messages = (props) => {
     }
 
 
-    if (!props.isAuth)
-        return <Redirect to={'/login'}/>
+
 
     return (
         <div className={q.messages}>

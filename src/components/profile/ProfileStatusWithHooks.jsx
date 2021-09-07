@@ -12,7 +12,7 @@ const ProfileStatusWithHooks = (props) => {
 
 
     const editModeOn = () => {
-        debugger
+
         if (props.authorizedUserId === props.userId) {
             setEditMode(true)
         }
