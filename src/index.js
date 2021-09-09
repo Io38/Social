@@ -13,7 +13,7 @@ let renderEntireTree = () => {
 
     reactDom.render(
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter >
             <App />
             </BrowserRouter>
         </Provider>, document.getElementById('root'));

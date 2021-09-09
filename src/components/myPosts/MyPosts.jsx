@@ -1,12 +1,20 @@
 import React from 'react';
 import q from './MyPosts.module.css';
 import Post from './post/Post';
+import Preloader from "../preloader/Preloader";
 
 
 const MyPosts = (props) => {
 
+
+    if (!props.profile) {
+
+        return <Preloader/>
+    }
+
     let newPostElement = React.createRef();
-    let PostsElements = props.PostData.map(el => <Post profile={ props.profile} text={el.text} count={el.count} LikesCount={el.LikesCount}/>);
+    let PostsElements = props.PostData.map(el => <Post profile={props.profile} like={props.like} text={el.text} count={el.count}
+                                                       LikesCount={el.LikesCount}/>);
 
 
     const onPostAdd = () => {
@@ -26,7 +34,15 @@ const MyPosts = (props) => {
     return (
 
         <div className={q.myPosts}>
-            <h2>My posts:</h2>
+            {
+                props.authorizedUserId === props.profile.userId ?
+                    <h2>My posts:</h2>
+                    :
+                    (
+
+                        <h2>Posts:</h2>
+                    )
+            }
 
 
             <div className={q.posts}>

@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE_PAGE = 'SET_USER_PROFILE_PAGE';
 const SET_STATUS = 'SET_STATUS';
+const LIKE = 'LIKE';
 
 let initialState = {
     PostData: [],
@@ -20,9 +21,10 @@ const profileReducer = (state = initialState, action) => {
             if (state.newPostText.trim() !== "") {
 
                 let newPost = {
-                    count: "1",
+                    count: state.PostData.length + 1,
                     text: state.newPostText,
-                    LikesCount: "0"
+                    LikesCount: 0,
+                    isLiked:false
                 };
 
                 return {
@@ -46,6 +48,7 @@ const profileReducer = (state = initialState, action) => {
 
             return {
                 ...state,
+                PostData: [],
                 profile: action.profile
 
             }
@@ -55,6 +58,25 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
 
+            }
+        case LIKE:
+
+            return {
+                ...state,
+
+                PostData: state.PostData.map(p => {
+
+                    if (p.count === action.count) {
+
+                        if (p.isLiked) {
+                            return {...p, LikesCount: action.likesNumber - 1, isLiked: false}
+                        } else {
+                            return {...p, LikesCount: action.likesNumber + 1, isLiked: true}
+                        }
+
+                    }
+                    return p;
+                })
             }
 
         default:
@@ -69,12 +91,14 @@ export const addPostActionCreator = () => ({type: ADD_POST});
 export const updatePostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 export const setUserProfilePage = (profile) => ({type: SET_USER_PROFILE_PAGE, profile});
 export const setStatus = (status) => ({type: SET_STATUS, status});
+export const like = (count, likesNumber) => ({type: LIKE, count, likesNumber});
 
 export const getProfile = (userId) => {
 
     return async (dispatch) => {
 
         let response = await usersAPI.getProfile(userId);
+        console.log(response)
         dispatch(setUserProfilePage(response.data));
 
     }
@@ -96,11 +120,11 @@ export const updateStatus = (status) => {
 
         let response = await profileAPI.updateStatus(status)
 
-            if (response.data.resultCode === 0) {
+        if (response.data.resultCode === 0) {
 
-                dispatch(setStatus(status));
+            dispatch(setStatus(status));
 
-            }
+        }
 
 
     }

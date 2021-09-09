@@ -38,6 +38,6 @@ let mapDispatchToProps = (dispatch) => {
 
 
 export default compose(
-    connect(mapStateToProps, {sendMessageActionCreator,updateMessageTextActionCreator,getDialogHistory}),
+    connect(mapStateToProps, mapDispatchToProps),
     withAuthRedirect
 )(Messages);

@@ -5,6 +5,7 @@ import {getProfile, getStatus, updateStatus} from './../../redux/profile-reducer
 import {withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 import {withAuthRedirect} from '../../HOC/withAuthRedirect';
+import Preloader from "../preloader/Preloader";
 
 
 class ProfileContainer extends React.Component {
@@ -30,8 +31,13 @@ class ProfileContainer extends React.Component {
 
     render() {
 
-        return <Profile {...this.props} profile={this.props.profile} status={this.props.status}
-                        updateStatus={this.props.updateStatus}/>
+        return (<>
+
+
+            <Profile {...this.props} profile={this.props.profile} status={this.props.status}
+                     updateStatus={this.props.updateStatus}/>
+
+        </>)
     }
 }
 

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import q from './Post.module.css';
 import defaultAva from "../../../assets/photo.png";
 
 
 const Post = (props) => {
 
-    const onLikesClick = () => {
 
+
+    const onLikesClick = (count,likesNumber) => {
+
+        props.like(count,likesNumber)
     }
 
     return (
@@ -26,8 +29,9 @@ const Post = (props) => {
             </div>
 
 
-            <div className={q.likes}>
-                <span onClick={onLikesClick}> Likes: {props.LikesCount}</span>
+            <div className={q.likes} onClick={() => {onLikesClick(props.count,props.LikesCount)}
+            }>
+                <span> Likes: {props.LikesCount}</span>
             </div>
 
 

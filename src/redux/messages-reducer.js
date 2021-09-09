@@ -4,8 +4,8 @@ const GET_DIALOG_HISTORY = 'GET_DIALOG_HISTORY';
 
 let initialState = {
     partnersData: [
-        {count: "1", name: "Vasya", active: false},
-        {count: "2", name: "Petya", active: true},
+        {count: "1", name: "Vasya", active: true},
+        {count: "2", name: "Petya", active: false},
         {count: "3", name: "John", active: false},
         {count: "4", name: "Viktor", active: false},
 
@@ -22,7 +22,7 @@ let initialState = {
 }
 
 const messagesReducer = (state = initialState, action) => {
-    debugger
+   
     switch (action.type) {
 
         case UPDATE_NEW_MESSAGE_TEXT:
